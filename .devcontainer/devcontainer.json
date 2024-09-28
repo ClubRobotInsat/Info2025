@@ -1,0 +1,56 @@
+{
+    "name": "ROS 2 Development Container",
+    "privileged": true,
+    "remoteUser": "pi",
+    "build": {
+      "dockerfile": "Dockerfile",
+      "args": {
+        "USERNAME": "pi"
+      }
+    },
+    "workspaceFolder": "/home/pi/ros2_ws",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/home/pi/ros2_ws/,type=bind",
+    "customizations": {
+      "vscode": {
+        "extensions":[
+          "ms-vscode.cpptools",
+          "ms-vscode.cpptools-themes",
+          "twxs.cmake",
+          "donjayamanne.python-extension-pack",
+          "eamodio.gitlens",
+          "ms-iot.vscode-ros",
+          "ms-python.python",
+          "smilerobotics.urdf"
+        ],
+        "settings": {
+          "terminal.integrated.profiles.linux": {
+              "bash (Host)": {
+                  "path": "bash"
+              }
+          },
+          "terminal.integrated.defaultProfile.linux": "bash"
+        }
+      }
+    },
+    "containerEnv": {
+      "DISPLAY": "unix:0",
+      "LIBGL_ALWAYS_SOFTWARE": "1", // Needed for software rendering of opengl
+      "ROS_AUTOMATIC_DISCOVERY_RANGE": "LOCALHOST",
+      "ROS_DOMAIN_ID": "1"
+    },
+    "runArgs": [
+      "-p3000:3000",
+      "-p2222:22",
+      "-p9090:9090",
+      "-e", "DISPLAY=${env:DISPLAY}",
+      "--network=host",
+      "--name=cr-ros2-dev-2025",
+      "-v=/dev:/dev" 
+    ],
+    "mounts": [
+      "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
+      "source=/dev/dri,target=/dev/dri,type=bind,consistency=cached"
+    ],
+    "postCreateCommand": "sudo apt update && rosdep update && rosdep install --from-paths src --ignore-src -y && sudo chown -R $(whoami) /home/pi/ros2_ws",
+    "postStartCommand": "sudo service ssh restart"
+  }
