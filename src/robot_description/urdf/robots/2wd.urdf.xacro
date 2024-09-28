@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<robot name="robot_2wd" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find robot_description)/urdf/2wd.properties.xacro" />
+  <xacro:include filename="$(find robot_description)/urdf/parts/base/base.urdf.xacro" />
+
+  <xacro:base 
+    length="${base_length}" 
+    width="${base_width}" 
+    height="${base_height}" 
+    mass="${base_mass}"
+    wheel_radius="${wheel_radius}"
+    wheel_pos_z="${wheel_pos_z}"
+/>
+</robot>
