@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:macro name="caster_wheel_link" params="side">
+        <gazebo reference="${side}_caster_wheel_link">
+            <mu1>0.01</mu1>
+            <mu2>0.01</mu2>
+        </gazebo>
+    </xacro:macro>
+</robot>

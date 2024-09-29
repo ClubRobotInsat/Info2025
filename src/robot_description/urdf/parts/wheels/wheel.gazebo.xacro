@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:macro name="wheel_link" params="side">
+        <gazebo reference="${side}_wheel_link">
+            <visual>
+                <material>
+                    <ambient>0.1764 0.4588 0.8509 1.0</ambient>
+                    <diffuse>0.1764 0.4588 0.8509 1.0</diffuse>
+                    <specular>0.1764 0.4588 0.8509 1.0</specular>
+                    <emissive>0.0 0.0 0.0 0.0</emissive>
+                </material>
+            </visual>
+        </gazebo>
+    </xacro:macro>
+</robot>
