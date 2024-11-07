@@ -45,7 +45,9 @@
       "-e", "DISPLAY=${env:DISPLAY}",
       "--network=host",
       "--name=cr-ros2-dev-2025",
-      "-v=/dev:/dev" 
+      "-v=/dev:/dev",
+      // "--runtime=nvidia", // NVIDIA GPU support
+      "--device=/dev/dri:/dev/dri" // Intel GPU support
     ],
     "mounts": [
       "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",

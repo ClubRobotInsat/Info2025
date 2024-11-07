@@ -9,6 +9,14 @@ ARG USER_GID=$USER_UID
 # Set environment variables
 ENV SHELL /bin/bash
 
+
+# Set NVIDIA_VISIBLE_DEVICES with a default value of 'all' if not specified
+ENV NVIDIA_VISIBLE_DEVICES=${NVIDIA_VISIBLE_DEVICES:-all}
+
+# Set NVIDIA_DRIVER_CAPABILITIES, appending 'graphics' to existing capabilities
+ENV NVIDIA_DRIVER_CAPABILITIES=${NVIDIA_DRIVER_CAPABILITIES:+$NVIDIA_DRIVER_CAPABILITIES,}graphics
+
+
 # Update system (not useful)
 # RUN apt-get update && apt-get upgrade -y
 
@@ -24,7 +32,10 @@ RUN apt-get update && apt-get install -y \
     ufw \
     iputils-ping \
     software-properties-common \ 
-    ros-humble-teleop-twist-keyboard
+    ros-humble-teleop-twist-keyboard \
+    # Intel GPU drivers
+    libgl1-mesa-glx \
+    libgl1-mesa-dri 
 
 # Install ros dependencies required
 RUN apt-get update && apt-get install -y \
