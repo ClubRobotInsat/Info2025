@@ -3,16 +3,15 @@
 <package format="3">
     <name>robot_description</name>
     <version>0.0.0</version>
-    <description>INSA Toulouse Description Package</description>
-    <maintainer email="rbonnet@insa-toulouse.fr">Ronan Bonnet</maintainer>
-    <license>Apache 2.0</license>
-    <url type="repository">https://github.com/ClubRobotInsat/Info2025</url>
-    <url type="bugtracker">https://github.com/ClubRobotInsat/Info2025/issues</url>
+    <description>TODO: Package description</description>
+    <maintainer email="robot@todo.todo">Ronan</maintainer>
+    <license>TODO: License declaration</license>
+
     <buildtool_depend>ament_cmake</buildtool_depend>
-    <exec_depend>joint_state_publisher</exec_depend>
-    <exec_depend>robot_state_publisher</exec_depend>
-    <exec_depend>rviz2</exec_depend>
-    <exec_depend>xacro</exec_depend>
+
+    <test_depend>ament_lint_auto</test_depend>
+    <test_depend>ament_lint_common</test_depend>
+
     <export>
         <build_type>ament_cmake</build_type>
     </export>

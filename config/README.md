@@ -1,6 +1,6 @@
 # How to configure
 
-## WiFi hotspot
+## WiFi hotspot (not working ?)
 
 Copy and paste the file `10-wifi-hotspot.yaml` to `/etc/netplan/` and run the following command:
 

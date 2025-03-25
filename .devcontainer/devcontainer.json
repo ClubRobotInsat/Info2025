@@ -36,7 +36,10 @@
       "DISPLAY": "unix:0",
       "LIBGL_ALWAYS_SOFTWARE": "1", // Needed for software rendering of opengl
       "ROS_AUTOMATIC_DISCOVERY_RANGE": "LOCALHOST",
-      "ROS_DOMAIN_ID": "1"
+      "ROS_DOMAIN_ID": "1",
+      "CUDA_VISIBLE_DEVICES": "0",
+      "NVIDIA_VISIBLE_DEVICES": "all",
+      "NVIDIA_DRIVER_CAPABILITIES": "compute,utility,graphics"
     },
     "runArgs": [
       "-p3000:3000",
@@ -46,8 +49,9 @@
       "--network=host",
       "--name=cr-ros2-dev-2025",
       "-v=/dev:/dev",
-      // "--runtime=nvidia", // NVIDIA GPU support
-      "--device=/dev/dri:/dev/dri" // Intel GPU support
+      "--gpus", "all",
+      "--runtime=nvidia", // NVIDIA GPU support
+      //"--device=/dev/dri:/dev/dri" // Intel GPU support
     ],
     "mounts": [
       "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached",
